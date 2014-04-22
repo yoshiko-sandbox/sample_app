@@ -7,4 +7,4 @@ test:
   adapter: postgresql
   host: localhost
   username: maasa
-  database: sample_app
+  database: sample_app_test
