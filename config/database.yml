@@ -3,8 +3,11 @@ development:
   host: localhost
   username: maasa
   database: sample_app
-test:
+test: &test
   adapter: postgresql
   host: localhost
   username: maasa
   database: sample_app_test
+
+cucumber:
+  <<: *test
