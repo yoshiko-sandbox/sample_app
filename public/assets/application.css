@@ -6255,3 +6255,20 @@ input {
   list-style: none;
   margin: 0 0 18px 0;
 }
+
+/* users index */
+/* line 179, ../../app/assets/stylesheets/custom.css.scss */
+.users {
+  list-style: none;
+  margin: 0;
+}
+/* line 182, ../../app/assets/stylesheets/custom.css.scss */
+.users li {
+  overflow: auto;
+  padding: 10px 0;
+  border-top: 1px solid #eeeeee;
+}
+/* line 186, ../../app/assets/stylesheets/custom.css.scss */
+.users li:last-child {
+  border-bottom: 1px solid #eeeeee;
+}
