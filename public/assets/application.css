@@ -6272,3 +6272,37 @@ input {
 .users li:last-child {
   border-bottom: 1px solid #eeeeee;
 }
+
+/* microposts */
+/* line 193, ../../app/assets/stylesheets/custom.css.scss */
+.microposts {
+  list-style: none;
+  margin: 10px 0 0 0;
+}
+/* line 197, ../../app/assets/stylesheets/custom.css.scss */
+.microposts li {
+  padding: 10px 0;
+  border-top: 1px solid #e8e8e8;
+}
+
+/* line 204, ../../app/assets/stylesheets/custom.css.scss */
+.content {
+  display: block;
+}
+
+/* line 207, ../../app/assets/stylesheets/custom.css.scss */
+.timestamp {
+  color: #999999;
+}
+
+/* line 210, ../../app/assets/stylesheets/custom.css.scss */
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+/* line 215, ../../app/assets/stylesheets/custom.css.scss */
+aside textarea {
+  height: 100px;
+  margin-bottom: 5px;
+}
