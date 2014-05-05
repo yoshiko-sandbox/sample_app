@@ -14,6 +14,7 @@ group :development, :test do
   gem 'guard-spork', '1.2.0'
   gem 'childprocess', '0.3.6'
   gem 'spork', '0.9.2'
+  gem 'factory_girl_rails', '4.1.0'
 end
 
 group :development, :test do
@@ -34,7 +35,6 @@ group :test do
   gem 'capybara', '1.1.2'
   gem 'rb-fsevent'
   gem 'growl', '1.0.3'
-  gem 'factory_girl_rails', '4.1.0'
   gem 'cucumber-rails', '1.2.1', :require => false
   gem 'database_cleaner', '0.7.0'
 end
