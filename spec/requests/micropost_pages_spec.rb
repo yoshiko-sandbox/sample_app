@@ -41,5 +41,23 @@ describe "Micropost pages" do
         expect { click_link "delete" }.to change(Micropost, :count).by(-1)
       end
     end
+
+    describe "another user's post can't show delete link" do
+      let(:another) { FactoryGirl.create(:user) }
+      before do
+        sign_in user
+        visit user_path(another)
+      end
+      it { should_not have_link('delete') }
+    end
+
+    describe "self post show delete link" do
+      before do
+        sign_in user
+        visit user_path(user)
+      end
+      it { should have_link('delete') }
+    end
+
   end
 end

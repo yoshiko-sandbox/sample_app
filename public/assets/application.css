@@ -6306,3 +6306,14 @@ aside textarea {
   height: 100px;
   margin-bottom: 5px;
 }
+
+/* line 220, ../../app/assets/stylesheets/custom.css.scss */
+#chars {
+  display: inline;
+  margin-left: 10px;
+}
+
+/* line 225, ../../app/assets/stylesheets/custom.css.scss */
+.red {
+  color: red;
+}

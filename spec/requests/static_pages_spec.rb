@@ -31,6 +31,27 @@ describe "Static pages" do
           page.should have_selector("li##{item.id}", text: item.content)
         end
       end
+
+      let(:word) { user.feed.count > 1 ? 'microposts' : 'micropost' }
+      it "side bar count test" do
+        should have_selector('span', text: "#{user.feed.count} #{word}")
+      end
+
+      describe "pagination test" do
+        before do
+          50.times do
+            FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
+          end
+          visit root_path
+          click_link "2"
+        end
+        it "page 2" do
+          user.reload.feed[31..30].each do |item|
+            page.should have_selector("li##{item.id}", text: item.content)
+          end
+        end
+      end
+
     end
   end
 
