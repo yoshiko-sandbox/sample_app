@@ -234,5 +234,19 @@ describe "User pages" do
       it { should have_selector('h3', text: 'Followers') }
       it { should have_link(user.name, href: user_path(user)) }
     end
+
+    describe "userを削除するとuserに紐付けられたrelationshipも削除される" do
+      let(:re) { user.relationships.build(followed_id: other_user.id).dup }
+
+      it "user destroy" do
+        user.destroy
+        Relationship.find_by_id(re.id).should be_nil
+      end
+
+      it "other_user destroy" do
+        other_user.destroy
+        Relationship.find_by_id(re.id).should be_nil
+      end
+    end
   end
 end
