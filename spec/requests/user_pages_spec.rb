@@ -249,4 +249,51 @@ describe "User pages" do
       end
     end
   end
+
+  describe "userページの統計情報チェック" do
+    let(:user) { FactoryGirl.create(:user) }
+    before do
+      FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
+      FactoryGirl.create(:micropost, user: user, content: "Dolor sit amet")
+      sign_in user
+      visit user_path(user)
+    end
+
+    it "should render the user's feed" do
+      user.feed.each do |item|
+        page.should have_selector("li##{item.id}", text: item.content)
+      end
+    end
+    
+    describe "follower/following counts" do
+      let(:other_user) { FactoryGirl.create(:user) }
+      before do
+        other_user.follow!(user)
+        visit user_path(user)
+      end
+
+        it { should have_link("0 following", href: following_user_path(user)) }
+        it { should have_link("1 followers", href: followers_user_path(user)) }
+      end
+
+      let(:word) { user.feed.count > 1 ? 'microposts' : 'micropost' }
+      it "side bar count test" do
+        should have_selector('span', text: "#{user.feed.count} #{word}")
+      end
+
+      describe "pagination test" do
+        before do
+          50.times do
+            FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
+          end
+          visit user_path(user)
+          click_link "2"
+        end
+        it "page 2" do
+          user.reload.feed[31..30].each do |item|
+            page.should have_selector("li##{item.id}", text: item.content)
+          end
+        end
+      end
+  end
 end
